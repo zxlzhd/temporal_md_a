@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/zxlzhd/temporal_md_a/t_start"
 	"github.com/zxlzhd/temporal_md_a/t_worker"
 	"os"
 	"strings"
-	"sync"
 )
 
 func determineRole() string {
@@ -16,18 +16,15 @@ func determineRole() string {
 	return "follower"
 }
 func main() {
-	var ww = sync.WaitGroup{}
-	ww.Add(1)
-	go func() {
-		defer ww.Done()
-		t_worker.MainW()
-	}()
+	fmt.Println("runing")
 	if determineRole() == "leader" {
-		ww.Add(1)
-		go func() {
-			defer ww.Done()
-			t_start.MainS()
-		}()
+		fmt.Println("start run")
+		t_start.StartRun()
 	}
-	ww.Wait()
+	//go func() {
+	fmt.Println("worker run")
+	t_worker.WorkerRun()
+	for {
+	}
+	//}()
 }

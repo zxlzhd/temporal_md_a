@@ -26,6 +26,7 @@ func SendMessage() error {
 	// 发送消息
 	err := writer.WriteMessages(context.Background(), msg)
 	if err != nil {
+		fmt.Println("Failed to send message:", err)
 		return err
 	}
 	fmt.Println("Sent message to topic:", topic)

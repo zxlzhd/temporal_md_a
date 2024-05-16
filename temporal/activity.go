@@ -3,6 +3,7 @@ package temporal
 import (
 	"context"
 	"fmt"
+	"github.com/zxlzhd/temporal_md_a/kafka"
 )
 
 func ComposeGreeting(ctx context.Context, name string) (string, error) {
@@ -12,9 +13,11 @@ func ComposeGreeting(ctx context.Context, name string) (string, error) {
 }
 func WriteMessage(ctx context.Context, message string) (string, error) {
 	fmt.Printf("send message is%v!", message)
+	kafka.SendMessage()
 	return "", nil
 }
 func ReadMessage(ctx context.Context, message string) (string, error) {
 	fmt.Printf("read message is%v!", message)
+	kafka.ReadMessage()
 	return "", nil
 }
