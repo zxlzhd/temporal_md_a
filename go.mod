@@ -2,7 +2,7 @@ module github.com/zxlzhd/temporal_md_a
 
 go 1.22.3
 
-require (
+require  (
 	github.com/segmentio/kafka-go v0.4.47
 	go.temporal.io/sdk v1.26.1
 )
